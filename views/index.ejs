@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 style="color: red;">18_17070951_Nguyễn Văn Tâm</h3>
+    <div style="margin-top: 50px; margin-left: 150px;">
+        <form action="/" method="POST">
+            <input type="text" name="id" id="id" placeholder="Nhập STT">
+            <input type="text" name="tenBaiBao" id="tenBaiBao" placeholder="Nhập Tên bài báo">
+            <input type="text" name="tenNhomTacGia" id="tenNhomTacGia" placeholder="Nhập tên nhóm tác giả">
+            <input type="text" name="isbn" id="isbn" placeholder="Nhập chỉ Số isbn">
+            <input type="text" name="soTrang" id="soTrang" placeholder="Nhập số trang">
+            <input type="text" name="namxb" id="namxb" placeholder="Nhập năm xuất bản">
+            <input type="submit" value="Thêm mới">
+            <input type="submit" value="Update">
+        </form>
+    </div>
+    <h1 style="text-align: center; color: blue;">Danh mục các bài báo</h1>
+    <div style="margin-top: 50px; margin-left: 450px;">
+        <table class="table" border="1">
+            <tr style="background-color: aquamarine; color: blue;">
+                <th>STT</th>
+                <th>Tên bài báo</th>
+                <th>Tên nhóm tác giả</th>
+                <th>Chỉ số isbn</th>
+                <th>Số trang</th>
+                <th>Năm xuất bản</th>
+                <th colspan="2">Action</th>
+            </tr>
+            <% for (let i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i]['id']%></td>
+                    <td style="color: blue;"><%= data[i]['tenBaiBao']%></td>
+                    <td><%= data[i]['tenNhomTacGia']%></td>
+                    <td><%= data[i]['isbn']%></td>
+                    <td><%= data[i]['soTrang']%></td>
+                    <td><%= data[i]['namxb']%></td>
+                    <td>
+                        <form action="/delete" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<%= data[i]['id']%>">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+</body>
+</html>
